@@ -16,6 +16,11 @@ class DefaultController extends Controller
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+            'categories' => $this->getCategoryManager()->renderList(),
         ]);
+    }
+    private function getCategoryManager()
+    {
+        return $this->get('app.category_manager');
     }
 }

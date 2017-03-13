@@ -1,13 +1,72 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>{% block title 'TrelloSf' %}</title>
+
+    {% block stylesheets %}
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    {% endblock %}
+
+
+</head>
+
+<body>
+
+{{ include(':navigation:navigation.html.twig') }}
+
+
+
+<div class="container-fluid" style="padding-top:100px;">
+    <header>
+        {% block header %}
+            <h1>Mon suivi de planning</h1>
+        {% endblock %}
+    </header>
+
+    <div class="row">
+        <div class="col-xs-12">
+            {% if app.session.started and app.session.flashBag.peekAll is not empty %}
+                <div class="messages">
+                    {% for type, messages in app.session.flashBag.all %}
+                        {% set type = type == 'error' ? 'danger': type %}
+                        {% for message in messages %}
+                            {# Bootstrap alert, see http://getbootstrap.com/components/#alerts #}
+                            <div class="alert alert-dismissible alert-{{ type }}" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+
+                                {{ message|trans }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <!-- Example row of columns -->
+    {% block content '' %}
+
+    <hr>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {{ include(':footer:footer.html.twig') }}
+</div> <!-- /container -->
+<!-- Button trigger modal -->
+
+
+{{ include(':modal:new_task_modal.html.twig') }}
+
+</body>
 </html>
