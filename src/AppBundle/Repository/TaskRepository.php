@@ -16,5 +16,13 @@ namespace AppBundle\Repository;
  */
 class TaskRepository extends \Doctrine\ORM\EntityRepository
 {
-
+    public function getTask($id)
+    {
+        return $this->createQueryBuilder('t')
+            ->select('t')
+            ->andWhere('t.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

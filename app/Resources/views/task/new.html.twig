@@ -1,0 +1,26 @@
+{% extends "::base.html.twig" %}
+
+
+        {% block title 'Nouvelle tâche' %}
+
+
+        {% block header %}
+            <h1>Ajouter une nouvelle tâche</h1>
+        {% endblock %}
+
+        {% block content %}
+            {{ form_start(form, {'attr': {'class': 'form-horizontal','novalidate': 'novalidate'}}) }}
+            {{ form_errors(form) }}
+            {{ form_row(form.name) }}
+            {{ form_row(form.description) }}
+            {{ form_row(form.status) }}
+            {{ form_row(form.category) }}
+            {{ form_rest(form) }}
+            <input type="submit" class="btn btn-primary" value="Envoyer">
+            {{ form_end(form) }}
+
+        {% endblock %}
+
+        {% block footer %}
+            {{ parent() }}
+        {% endblock %}

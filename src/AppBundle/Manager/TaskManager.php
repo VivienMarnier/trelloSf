@@ -35,6 +35,10 @@ class TaskManager
         }
         $this->doctrineManager->flush();
     }
+    public function getTask($id)
+    {
+        return $this->getRepository()->getTask($id);
+    }
     private function getRepository()
     {
         return $this->doctrineManager->getRepository(Task::class);

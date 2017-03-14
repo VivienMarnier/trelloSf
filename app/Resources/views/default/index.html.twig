@@ -8,7 +8,7 @@
                 {% for task in category.tasks %}
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <div><a href="#">{{ task.name }}</a></div>
+                            <div><a href="{{ path('app_task_view',{'id': task.id}) }}">{{ task.name }}</a></div>
                             <p>
                             <div>{{ task.description }}</div>
                             <p>

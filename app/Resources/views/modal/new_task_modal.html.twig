@@ -7,21 +7,30 @@
                 <h4 class="modal-title" id="myModalLabel">Ajouter</h4>
             </div>
             <div class="modal-body">
-
-                <form>
+                <form method="POST" action="{{ path('app_task_new') }}">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Description</label>
-
-                        <textarea class="form-control" rows="3">Saisissez ici les informations que vous souhaitez</textarea>
+                        <label for="name">Nom</label>
+                        <input type="text" id="name" name="name" class="form-control" rows="3" placeholder="Nom de la tâche">
                     </div>
-
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="3">Saisissez ici le descriptif de la tâche</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select>
+                            <option value="volvo"></option>
+                            <option value="volvo"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Catégorie</label>
+                        <textarea class="form-control" id="category" name="category" rows="3">Saisissez ici le descriptif de la tâche</textarea>
+                    </div>
 
                     <button type="submit" class="btn btn-success">Ajouter</button>
                 </form>
-
-
             </div>
-
         </div>
     </div>
 </div>
