@@ -25,7 +25,7 @@ class TaskType extends AbstractType
     {
         $builder->add('name');
         $builder->add('description');
-        $builder->add('status',ChoiceType::class,['choices' =>['Open' =>Task::STATUS_OPEN,'Closed' =>Task::STATUS_CLOSED]]);
+        $builder->add('status',ChoiceType::class,['choices' =>['Open' => Task::STATUS_OPEN,'Closed' => Task::STATUS_CLOSED]]);
         $builder->add('category',EntityType::class,['class' => 'AppBundle\Entity\Category','choice_label' => 'name']);
     }
     /**

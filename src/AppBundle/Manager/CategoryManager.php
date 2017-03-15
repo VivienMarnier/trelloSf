@@ -23,7 +23,7 @@ class CategoryManager
     {
         $this->doctrineManager = $doctrineManager;
     }
-    public function renderList()
+    public function getCategories()
     {
         return $this->getRepository()->getCategories();
     }
