@@ -35,6 +35,15 @@ class TaskManager
         }
         $this->doctrineManager->flush();
     }
+    public function remove(Task $task)
+    {
+        $this->doctrineManager->remove($task);
+        $this->doctrineManager->flush();
+    }
+    public function getTasks()
+    {
+        return $this->getRepository()->getTasks();
+    }
     public function getTask($id)
     {
         return $this->getRepository()->getTask($id);
