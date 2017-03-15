@@ -73,7 +73,7 @@ class ApiTaskController extends Controller
             $this->getTaskManager()->save($form->getData());
             return $form->getData();
         }
-        return new View($form->getErrors(),Response::HTTP_BAD_REQUEST);
+        return new View($form,Response::HTTP_BAD_REQUEST);
     }
 
     /**
@@ -105,7 +105,7 @@ class ApiTaskController extends Controller
             $this->getTaskManager()->save($form->getData());
             return $form->getData();
         }
-        return new View($form->getErrors(),Response::HTTP_BAD_REQUEST);
+        return new View($form,Response::HTTP_BAD_REQUEST);
     }
 
     /**

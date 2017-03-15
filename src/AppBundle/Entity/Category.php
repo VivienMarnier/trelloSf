@@ -116,4 +116,8 @@ class Category
     {
         return $this->tasks;
     }
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }

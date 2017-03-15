@@ -16,7 +16,13 @@ services:
         arguments:
             - "@=service('doctrine').getManager()"
     app.normalizer.category:
-            class: AppBundle\Serializer\Normalizer\CategoryNormalizer
-            tags:
-                - { name: serializer.normalizer }
+        class: AppBundle\Serializer\Normalizer\CategoryNormalizer
+        tags:
+            - { name: serializer.normalizer }
+
+    admin.category:
+        class: AppBundle\Admin\CategoryAdmin
+        arguments: [~, AppBundle\Entity\Category, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Category }
 
